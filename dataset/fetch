@@ -1,0 +1,17 @@
+#! /bin/env bash
+
+declare location="https://zenodo.org/record/5651217/files"
+declare dataset=("healthy_subset_ecg_data" "diabetes_subset_ecg_data")
+declare exclude="012_diabetes"
+
+for dt in ${dataset[@]}; do
+	if [ ! -d "${dt}" ]; then
+		wget "${location}/${dt}.zip?download=1" -O "${dt}.zip"
+		unzip "${dt}.zip"
+	fi
+done
+
+if [ -d "${dataset[0]}/${exclude}" ]; then
+	echo "Move ${exclude} to appropriate folder"
+	mv "${dataset[0]}/${exclude}" "${dataset[1]}/${exclude}"
+fi
