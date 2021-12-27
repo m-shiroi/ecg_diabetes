@@ -24,3 +24,7 @@ cd ..
 ```bash
 jupyter lab
 ```
+### Report
+- [Presentation](Intro.pdf)
+- [Report](ECG_Diabetes_detection.pdf)
+
